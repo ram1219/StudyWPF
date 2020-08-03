@@ -1,0 +1,53 @@
+﻿<Application x:Class="BikeShopApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BikeShopApp"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Button x:Key="PKNU_Button" Content="Hello, PKNU"/>
+            <SolidColorBrush x:Key="PKNU_AccentBrush" Color="OrangeRed"/>
+            <sys:Double x:Key="Pknu_Width">1280</sys:Double>
+            <sys:Double x:Key="Pknu_Height">720</sys:Double>
+            <sys:String x:Key="Pknu_title">Main Window</sys:String>
+
+            <LinearGradientBrush x:Key="page_background">
+                <GradientStop Color="CadetBlue" Offset="0"/>
+                <GradientStop Color="AliceBlue" Offset="1"/>
+            </LinearGradientBrush>
+            
+           
+            <Style x:Key="niceButton" TargetType="Button">
+                 <!-- 안에 사용가능한 컨트롤들을 Setter Property로 사용 -->
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush>
+                            <GradientStop Color="Orange" Offset="0"/>
+                            <GradientStop Color="Yellow" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="style_Button" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Rectangle Fill="#BB000000" Margin="5,5,0,0" RadiusX="5" RadiusY="5"/>
+                                <Rectangle Fill="{TemplateBinding Background}" 
+                                           Margin="0,0,5,5" RadiusX="5" RadiusY="5"/>
+                                <Label Content="{TemplateBinding Content}"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,43 @@
+﻿<mah:MetroWindow x:Class="MovieApp.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:MovieApp"
+        mc:Ignorable="d"
+        Foreground="Ivory"
+        WindowState="Maximized"
+        Icon="../Media/movie.ico"
+        Title=" Cinema Management" 
+        Background="{StaticResource MahApps.Brushes.Gray1}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Grid.Column="1" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   Text="KGR MOVIE" FontSize="30" FontWeight="Bold"/>
+    
+        <!-- Login Button -->
+        <Button x:Name="BtnLogin" Grid.Row="0" Grid.Column="2" 
+                Width="100" Height="30" Margin="10" Content="로그인"
+                Click="BtnLogin_Click"/>
+
+        
+        <!-- Search TextBox -->
+        <TextBox x:Name="TxtSearchMovie" Grid.Row="1" Grid.Column="1" 
+                 Height="35" Margin="10"
+                 Style="{StaticResource MahApps.Styles.TextBox}"/>
+    </Grid>
+</mah:MetroWindow>

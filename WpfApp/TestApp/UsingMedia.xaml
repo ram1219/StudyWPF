@@ -1,0 +1,15 @@
+﻿<Window x:Class="TestApp.UsingMedia"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestApp"
+        mc:Ignorable="d"
+        Title="UsingMedia" Height="450" Width="800">
+    <Grid>
+        <!-- 이미지와 동영상 등 미디어는 Source를 사용하여 삽입한다. -->
+        <Image Source="./Media/cat.jpg" Stretch="UniformToFill" Margin="316,10,352,280" RenderTransformOrigin="0.513,0.176"/>
+        <MediaElement Source="./Media/cat.wmv" Stretch="Uniform" Margin="129,160,129,20" Width="534" LoadedBehavior="Play"/>
+        <Image HorizontalAlignment="Left" Height="100" Width="100"/>
+    </Grid>
+</Window>

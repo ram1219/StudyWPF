@@ -1,0 +1,165 @@
+﻿<Page x:Class="BikeShopApp.TestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BikeShopApp"
+      xmlns:bl="clr-namespace:BusinessLogic"
+      xmlns:m="clr-namespace:BikeShopApp.maths"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="800"
+      Title="TestPage" Background="Beige">
+    <Page.Resources>
+        <m:TwiceConverter x:Key="twiceConv"/>
+    </Page.Resources>
+    <Grid Loaded="Grid_Loaded">
+        <!--<Label>
+            --><!-- 위에서 namespace:BikeShopApp이 local로 되어있다. -->
+            <!-- 새로운 이름의 namespce를 추가한 경우 아래와 같이 위에 namespace를 추가하면 된다. -->
+            <!-- xmlns:bl="cls-namespace:BusinessLogic" --><!--
+            <bl:Car x:Name="car1">
+                <bl:Car.Speed>100</bl:Car.Speed>
+                <bl:Car.Color>Red</bl:Car.Color>
+                <bl:Car.Driver>
+                    <bl:Human Name="Hayoung" HasDrivingLicense="True"/>
+                </bl:Car.Driver>
+            </bl:Car>
+        </Label>-->
+        <!--<Grid Width="50" Height="50" Background="Orange">
+            <Button Content="Hell World" Margin="5"/>
+        </Grid>-->
+        
+        <!--<Canvas Background="Orange" Margin="30">
+            <Button Canvas.Left="10" Canvas.Top="15" Content="Button A"/>
+            <Button Canvas.Left="20" Canvas.Bottom="20" Content="Button B"/>
+        </Canvas>-->
+
+        <!--<DockPanel>
+            <Button Content="Button A" DockPanel.Dock="Left"/>
+            <Button Content="Button B" DockPanel.Dock="Right"/>
+            <Button Content="Button C" DockPanel.Dock="Top"/>
+            <Button Content="Button D" DockPanel.Dock="Bottom"/>
+            <Button Content="Button E" />
+        </DockPanel>-->
+
+        <!--<Grid Width="500" Height="200">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            --><!-- 버튼의 위치를 지정하지 않은 경우 default = (0,0) --><!--
+            <Button Grid.Row="0" Grid.Column="0" Content="Button A" Margin="5"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="Button B" Margin="5"/>
+            <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Content="Button B" Margin="5"/>
+            --><!-- ColumnSpan -> 지정한 숫자만큼 Grid칸을 차지한다. -->
+            <!-- 보통 RowSpan보다 ColumnSpan을 많이 사용한다. --><!--
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Button C" Margin="5"/>
+        </Grid>-->
+
+        <!--<Grid Width="500" Height="100">
+            <Grid.RowDefinitions>
+                --><!-- RowDefinition에는 Width가 없다.--><!--
+                <RowDefinition  Height="80"/>
+                --><!-- 전체 Grid의 크기에 맞춰서 자동으로 남은 20을 Height로 가진다.--><!--
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                --><!-- *을 배율을 뜻한다. -> 아래 Width는 1:1:2의 배율을 가진다.--><!--
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>-->
+
+        <!--<Grid Width="350" Height="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            --><!-- List에 삽입할 컨트롤에 바인딩을 걸고 싶을 때, ItemsSource --><!--
+            <ListBox x:Name="ListCar" ItemsSource="{Binding}" Grid.Column="0">
+                --><!--<Label Content="Element1"/>
+                <Label Content="Element2"/>
+                <TextBlock Text="Element3"/>
+                <GroupBox Header="Element4">
+                    This is a subsentence
+                </GroupBox>--><!--
+
+                <ListBox.ItemTemplate>
+                    <ItemContainerTemplate>
+                        <StackPanel>
+                            --><!-- Label과 TextBlock는 디자인적인 차이 : Label->여유공간이 있다. TextBlock->오밀조밀 -->
+                            <!--<Label Content="{Binding Speed}"/>--><!--
+                            <TextBlock Text="Speed" />
+                            --><!-- StringFormat'{}{0:0}' -> 정수로 표현 --><!--
+                            <TextBox Text="{Binding Speed, StringFormat='{}{0:0}'}" />
+                            <Slider Maximum="300" Value="{Binding Speed}"/>
+                            
+                            <TextBlock Text="Color"/>
+                            --><!-- 영역을 구분하여 디자인 --><!--
+                            <Border Height="20">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBox Text="{Binding Color}"/>
+
+                            --><!-- 바인딩 된 리스트 안의 Driver의 Name을 사용 --><!--
+                            <TextBlock Text="Diver"/>
+                            <TextBox Text="{Binding Driver.Name}"/>
+                        </StackPanel>
+                    </ItemContainerTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ComboBox Grid.Column="2" Height="30" VerticalAlignment="Top">
+                <Label Content="Element1"/>
+                <Label Content="Element2"/>
+                <TextBlock Text="Element3"/>
+                <GroupBox Header="Element4">
+                    This is a subsentence
+                </GroupBox>
+            </ComboBox>
+        </Grid>-->
+
+        <!--<StackPanel Margin="10">
+            <Slider x:Name="slider" Value="10" Minimum="0" Maximum="100"/>
+            --><!-- 위에서 지정한 Slider의 Value를 아래 ProgressBar의 Value로 사용한다.--><!--
+            <ProgressBar Height="30" Minimum="0" Maximum="100" Value="{Binding Value, ElementName=slider}"/>
+            --><!-- StringFormat을 사용하여 정수 형식으로 표현하다.--><!--
+            <TextBlock TextAlignment="Center" Text="{Binding Value, ElementName=slider, StringFormat='{}{0:#,#}'}"/>
+            --><!-- .cs파일에서 바인딩할 정보를 DataContext에 저장했으므로 따로 ElementName=car을 할 필요가 없다.--><!--
+            <TextBlock Text="{Binding Driver.Name}" Height="30" TextAlignment="Center" FontSize="20"/>
+            --><!-- Converter -> 내가 원하는 대로 값을 만듦 --><!--
+            <TextBox Text="{Binding Speed, Mode=TwoWay, Converter={StaticResource twiceConv}}" FontSize="20" Width="100"/>
+            <TextBlock Text="{Binding Speed, Mode=OneWay}" FontSize="20"/>
+        </StackPanel>-->
+
+        <Grid Width="300" Height="100">
+            <Button Content="Click" FontFamily="20" Click="Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+
+                            <Rectangle Fill="{TemplateBinding Background}" 
+                                       StrokeThickness="0.5" Stroke="{TemplateBinding BorderBrush}" 
+                                       RadiusY="10" RadiusX="10"/>
+                            <Label Content="Click" 
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                   FontSize="{TemplateBinding FontSize}" FontStyle="{TemplateBinding FontStyle}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <!--<Label Content="{StaticResource button}" Background="{StaticResource accentBrush}"/>-->
+        </Grid>
+        
+       
+    </Grid>
+</Page>
+             
