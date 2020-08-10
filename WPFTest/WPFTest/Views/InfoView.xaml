@@ -43,6 +43,7 @@
         <Button x:Name="BtnConfirm" Grid.Row="5" Grid.Column="3" Content="확인" 
                 Width="100" HorizontalAlignment="Right" Margin="5"
                 Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}"
-                Click="Button_Click" />
+                IsCancel="True"
+                />
     </Grid>
 </Window>

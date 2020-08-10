@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using WPFTest.Views;
 
 namespace WPFTest.ViewModels
 {
@@ -73,6 +75,5 @@ namespace WPFTest.ViewModels
                 return ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
         }
-
     }
 }

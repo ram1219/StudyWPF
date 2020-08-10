@@ -5,102 +5,146 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:Commons="clr-namespace:WPFTest.Helpers"
         xmlns:local="clr-namespace:WPFTest"
         Icon="../sensor.ico" Title=" Photo Register"
-        mc:Ignorable="d"
         ResizeMode="NoResize"
-        Height="700" Width="600" Margin="10">
+        Height="750" Width="600" Margin="10">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.9*"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.7*"/>
         </Grid.ColumnDefinitions>
+        <!-- Menu Design -->
+        <Menu Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5"
+              Style="{StaticResource MahApps.Styles.Menu}" 
+              Background="#F1F3F5" BorderBrush="#E9ECEF" BorderThickness="1">
+            <MenuItem Header="_시뮬레이션" Background="#F1F3F5" 
+                      VerticalAlignment="Center">
+                <MenuItem x:Name="BtnStart" Header="_시작">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/start.png" Width="18"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="BtnStop" Header="_정지">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/stop.png" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+            </MenuItem>
+            <MenuItem Header="_도움말" Background="#F1F3F5" 
+                      VerticalAlignment="Center">
+                <MenuItem x:Name="BtnInfo" Header="_정보">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/search.png" Width="15"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+            </MenuItem>
+        </Menu>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="연결시간 : "
-                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="포토레지스터 : "
-                   HorizontalAlignment="Right" Margin="0,10,0,40"/>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="96*"/>
+                <ColumnDefinition Width="150*"/>
+                <ColumnDefinition Width="71*"/>
+                <ColumnDefinition Width="97*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="연결시간 : "
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Height="19" Margin="0,12" Width="69"/>
+            <TextBlock Grid.Column="2" Text="연결갯수 : "
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Height="19" Margin="0,12,1,12" Width="70"/>
 
-        <!-- 연결시간 -->
-        <TextBox x:Name="TxtSensorCount"
-                 Grid.Row="1" Grid.Column="1" Margin="20,5" 
-                 Style="{StaticResource MahApps.Styles.TextBox}" Background="Cornsilk"/>
+            <!-- 연결시간 -->
+            <TextBox x:Name="TxtSensorTime"
+                     Grid.Column="1" Margin="0,5,5,5" 
+                     Style="{StaticResource MahApps.Styles.TextBox}" Background="Cornsilk"/>
+            <!-- 연결갯수-->
+            <TextBox x:Name="TxtSensorCount"
+                     Grid.Column="3" Margin="0,5,5,5" 
+                     Style="{StaticResource MahApps.Styles.TextBox}" Background="Cornsilk"/>
+        </Grid>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="포토레지스터 : "
+                   HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5"/>
 
-        <Grid Grid.Row="2" Grid.Column="1">
+
+        <Grid Grid.Row="3" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.5*"/>
             </Grid.RowDefinitions>
             <!-- 포토레지스터 -->
-            <ProgressBar x:Name="TimerValue"
-                         Grid.Row="0" Margin="20,5" Minimum="0" Maximum="1023"
+            <ProgressBar x:Name="PrgSensor"
+                         Grid.Row="0" Margin="0,0,5,0" Minimum="0" Maximum="1023"
                          Style="{StaticResource MahApps.Styles.ProgressBar}" Background="Cornsilk"/>
             <TextBlock x:Name="TxtPrgValue" 
-                       Grid.Row="1" Margin="20,0" Text="100" HorizontalAlignment="Center"/>
+                       Grid.Row="1" Margin="10,0" Text="{Binding ElementName=PrgSensor, Path=Value}" 
+                       HorizontalAlignment="Center"/>
         </Grid>
 
         <!-- DB에 전송되는 시간 출력 -->
         <TextBox x:Name="RtbLog" 
-                 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="40,5,20,5"
+                 Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,9,5,5"
                  Background="DimGray"
-                 Foreground="White" IsReadOnly="True"
-                 ScrollViewer.VerticalScrollBarVisibility="Visible"
-                 ScrollViewer.CanContentScroll="True"
-                 AcceptsReturn="True" TextWrapping="Wrap"/>
+                 Foreground="White" IsReadOnly="True" TextWrapping="Wrap"
+                 AcceptsReturn="True" Commons:TextBoxBehavior.AutoScrollToEnd="True"
+                 ScrollViewer.VerticalScrollBarVisibility="Visible"/>
 
-        <!-- Start Button -->
-        <Button x:Name="BtnStart" 
-                Grid.Row="1" Grid.Column="2" Margin="20,3" Content="START"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-        
-        <!-- Stop Button-->
-        <Button x:Name="BtnStop" 
-                Grid.Row="2" Grid.Column="2" Margin="20,5,20,38" Content="STOP"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
-      
-        <!-- Info Button -->
-        <Button x:Name="BtnInfo" 
-                Grid.Row="3" Grid.Column="2" Margin="20,5,20,75" Content="Info"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+        <Grid Grid.Row="2" Grid.Column="2" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
+            <!-- ComboBox -->
+            <ComboBox x:Name="CboSerialPort" SelectedItem="{Binding Selectedcboitem}"
+                      Grid.Row="0" Margin="3"/>
+
+            <!-- Connect Button -->
+            <Button x:Name="BtnConnect"
+                    Grid.Row="1" Margin="3" Content="Connect"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+
+            <!-- DisConnect Button-->
+            <Button x:Name="BtnDisconnect"
+                    Grid.Row="2" Margin="3" Content="Disconnect"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"/>
+
+            <!-- Port Button -->
+            <Grid Grid.Row="3" Background="{StaticResource MahApps.Brushes.Accent}" Margin="3" >
+                <TextBlock Text="{Binding PrintPortNumber}" FontSize="25" FontWeight="Bold" Foreground="White"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
 
         <!-- Chart -->
-        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10">
-            <lvc:CartesianChart x:Name="PrintGraph" Series="{Binding PrintGraph}">
+        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="5">
+            <lvc:CartesianChart x:Name="PrintGraph" 
+                                Series="{Binding PrintGraph}" Zoom="X">
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="Time" MinValue="0" MaxValue="200"/>
+                    <lvc:Axis x:Name="X" Title="Time" MinValue="1" MaxValue="100"/>
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Value" MinValue="0" MaxValue="1023"/>
+                    <lvc:Axis x:Name="Y" Title="Value" MinValue="0" MaxValue="1500"/>
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
         </Grid>
 
-        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            
-            <!-- All Button -->
-            <Button x:Name="BtnAll" 
-                    Grid.Column="0" HorizontalAlignment="Right" 
-                    Style="{StaticResource MahApps.Styles.Button.MetroSquare}"
-                    Margin="10" Width="150" Height="30" Content="View All"/>
-            
-            <!-- Zoom Button -->
-            <Button x:Name="BtnZoom" 
-                    Grid.Column="1" HorizontalAlignment="Left"
-                    Margin="10" Width="150" Height="30" Content="Zoom"/>
-           
-        </Grid>
+        <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                 HorizontalAlignment="Center" VerticalAlignment="Center" 
+                 Text="마우스 휠을 이용하여 확대, 축소가 가능합니다."
+                 Foreground="Gray" FontSize="20"/>
     </Grid>
 </mah:MetroWindow>
