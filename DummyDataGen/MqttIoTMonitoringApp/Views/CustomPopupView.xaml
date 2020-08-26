@@ -1,0 +1,36 @@
+﻿<mah:MetroWindow x:Class="MqttIoTMonitoringApp.Views.CustomPopupView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:MqttIoTMonitoringApp.Views"
+        xmlns:helper="clr-namespace:MqttIoTMonitoringApp.Helpers"
+        mc:Ignorable="d" Height="220" Width="300"
+        WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="DisplayName" Grid.Row="0"/>
+
+        <TextBox x:Name="BrokerIp" Grid.Row="1" 
+                 Style="{DynamicResource MahApps.Styles.TextBox}" 
+                 mah:TextBoxHelper.Watermark="broker Url" FontSize="18"/>
+
+        <TextBox x:Name="Topic" Grid.Row="2"
+                 Style="{DynamicResource MahApps.Styles.TextBox}"
+                 mah:TextBoxHelper.Watermark="Topic" FontSize="18"/>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="AcceptClose" IsDefault="True" Content="ACCEPT"
+                    Style="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}"/>
+            <Button IsCancel="True" Content="CANCEL" Margin="5,0,0,0"
+                    Style="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="PrismModule.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="MainShell">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 전체 Grid -->
+        <ContentControl Grid.Row="0" Grid.RowSpan="2"
+                        prism:RegionManager.RegionName="ContentRegion"/>
+        
+        <!-- 첫번째 Grid -->
+        <ContentControl Grid.Row="0" prism:RegionManager.RegionName="FirstRegion"/>
+        
+        <!-- 두번째 Grid -->
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="SecondRegion"/>
+        
+    </Grid>
+</Window>

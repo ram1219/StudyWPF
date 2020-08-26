@@ -16,16 +16,16 @@ namespace WPFTest.ViewModels
 {
 	public class ShellViewModel : Conductor<object>
 	{
-		DispatcherTimer timer = new DispatcherTimer();					// 타이머
-        Random rand = new Random();										// 랜덤값
-		SerialPort serial;												// 아두이노 시리얼
+		DispatcherTimer timer = new DispatcherTimer();                  // 타이머
+		Random rand = new Random();                                     // 랜덤값
+		SerialPort serial;                                              // 아두이노 시리얼
 
-		public BindableCollection<SensorModel> Sensor;					// SensorMedel과 데이터 바인딩
-		private SensorModel selectSensor;								// 센서 모델 중 한 개
+		public BindableCollection<SensorModel> Sensor;                  // SensorMedel과 데이터 바인딩
+		private SensorModel selectSensor;                               // 센서 모델 중 한 개
 
 		public BindableCollection<string> CboSerialPort { get; set; }   // 콤보박스 바인딩
 
-		public SeriesCollection PrintGraph { get; set; }				// 그래프
+		public SeriesCollection PrintGraph { get; set; }                // 그래프
 
 		#region Constructor Part
 		public ShellViewModel()
@@ -34,7 +34,7 @@ namespace WPFTest.ViewModels
 			// 여러개의 Sensor모델을 저장하는 리스트와 같은 역할
 			Sensor = new BindableCollection<SensorModel>();
 
-			InitGraph();		// 그래프
+			InitGraph();        // 그래프
 			InitControls();     // 콤보박스
 		}
 		#endregion
@@ -301,7 +301,7 @@ namespace WPFTest.ViewModels
 			timer.Tick += new EventHandler(Timer_Tick);         // 이벤트 추가
 			timer.Start();                                      // 타이머 시작 설정
 
-			if(serial != null)
+			if (serial != null)
 				BtnDisconnect();
 		}
 
@@ -315,12 +315,12 @@ namespace WPFTest.ViewModels
 		// 시리얼 통신 연결
 		public void BtnConnect()
 		{
-			if(IsSimulation)
+			if (IsSimulation)
 				BtnStop();
 
 			IsSensorMode = true;
 
-			serial = new SerialPort(Selectedcboitem);
+			serial = new SerialPort(Selectedcboitem, 115200);
 			serial.DataReceived += Serial_DataReceived;
 			serial.Open();
 		}
@@ -333,7 +333,7 @@ namespace WPFTest.ViewModels
 				// 초기화 
 				DataLog.Clear();
 				PrintGraph.Clear();
-				TimerValue = 0;	
+				TimerValue = 0;
 			}
 
 			serial.Close();
@@ -345,7 +345,7 @@ namespace WPFTest.ViewModels
 		{
 			IWindowManager btninfo = new WindowManager();
 			btninfo.ShowDialog(new InfoViewModel(), null, null);
-		}		
+		}
 	}
 	#endregion
 

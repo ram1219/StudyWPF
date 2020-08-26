@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyPrism", "StudyPrism\StudyPrism.csproj", "{960BB151-FACE-4747-9492-BC508C34E983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubModule", "SubModule\SubModule.csproj", "{CFA5C11F-92D8-47A1-A6C2-BA5B748F2764}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{960BB151-FACE-4747-9492-BC508C34E983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960BB151-FACE-4747-9492-BC508C34E983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960BB151-FACE-4747-9492-BC508C34E983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960BB151-FACE-4747-9492-BC508C34E983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA5C11F-92D8-47A1-A6C2-BA5B748F2764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA5C11F-92D8-47A1-A6C2-BA5B748F2764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA5C11F-92D8-47A1-A6C2-BA5B748F2764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA5C11F-92D8-47A1-A6C2-BA5B748F2764}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01AEFEC5-E9CA-4F27-837E-7E59E801E0AD}
+	EndGlobalSection
+EndGlobal

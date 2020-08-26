@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="NavigationTest.Views.ToolBar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:prism="http://prismlibrary.com/"
+      xmlns:local="clr-namespace:NavigationTest.Views"
+      prism:ViewModelLocator.AutoWireViewModel="True" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock Text="This is Toolbar" HorizontalAlignment="Center" FontWeight="Bold"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Add Family" Margin="5" Command="{Binding AddProfileCommand}" Width="150"/>
+            <Button Content="Import Family" Margin="5" Width="150"/>
+            <Button Content="Remove Family" Margin="5" Command="{Binding DeleteCommand}" Width="150"/>
+            <Button Content="Navigate to Logger" Margin="5" Command="{Binding NavigateCommand}" CommandParameter="Logger" Width="150"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

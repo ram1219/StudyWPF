@@ -69,11 +69,13 @@
             <!-- 연결시간 -->
             <TextBox x:Name="TxtSensorTime"
                      Grid.Column="1" Margin="0,5,5,5" 
-                     Style="{StaticResource MahApps.Styles.TextBox}" Background="Cornsilk"/>
+                     Style="{StaticResource MahApps.Styles.TextBox}" Background="Cornsilk"
+                     IsReadOnly="True"/>
             <!-- 연결갯수-->
             <TextBox x:Name="TxtSensorCount"
                      Grid.Column="3" Margin="0,5,5,5" 
-                     Style="{StaticResource MahApps.Styles.TextBox}" Background="Cornsilk"/>
+                     Style="{StaticResource MahApps.Styles.TextBox}" Background="Cornsilk"
+                     IsReadOnly="True"/>
         </Grid>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="포토레지스터 : "
                    HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5"/>

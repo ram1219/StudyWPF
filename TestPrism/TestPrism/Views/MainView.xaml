@@ -1,0 +1,29 @@
+﻿<Window x:Class="TestPrism.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:local="clr-namespace:TestPrism.Views"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Print Text -->
+        <Grid Grid.Row="0" Background="BlueViolet" Margin="10">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Text="{Binding TestText}" Foreground="Wheat" FontSize="20" FontWeight="Bold"/>
+        </Grid>
+        
+        <!-- Text Change Button -->
+        <Button Grid.Row="1" 
+                Margin="10" Content="Text Change" FontSize="20" FontWeight="Bold"
+                Command="{Binding TxtChangeCommand}"/>
+    </Grid>
+</Window>
